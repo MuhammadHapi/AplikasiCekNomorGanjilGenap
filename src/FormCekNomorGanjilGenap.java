@@ -31,20 +31,30 @@ public class FormCekNomorGanjilGenap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         txtInput = new javax.swing.JTextField();
         btnCek = new javax.swing.JButton();
         lblHasil = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btnCekPrima = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        txtInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtInputFocusGained(evt);
+            }
+        });
         txtInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtInputActionPerformed(evt);
             }
         });
 
-        btnCek.setText("CEK");
+        btnCek.setText("CEK GANJIL GENAP");
         btnCek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCekActionPerformed(evt);
@@ -53,7 +63,16 @@ public class FormCekNomorGanjilGenap extends javax.swing.JFrame {
 
         lblHasil.setText("jLabel1");
 
-        jLabel1.setText("Masukkan Angka");
+        jLabel1.setText("Masukkan Angka  :");
+
+        btnCekPrima.setText("CEK BILANGAN PRIMA");
+        btnCekPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekPrimaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Hasil                       :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,15 +80,25 @@ public class FormCekNomorGanjilGenap extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblHasil)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(btnCek, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtInput))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCek)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCekPrima, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtInput)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(34, 34, 34)
+                                .addComponent(lblHasil)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,10 +108,16 @@ public class FormCekNomorGanjilGenap extends javax.swing.JFrame {
                     .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCek)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblHasil)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCek)
+                    .addComponent(btnCekPrima))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHasil)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -93,8 +128,10 @@ public class FormCekNomorGanjilGenap extends javax.swing.JFrame {
     int angka = Integer.parseInt(txtInput.getText());
     if (angka % 2 == 0) {
         lblHasil.setText("Angka " + angka + " adalah Genap");
+        JOptionPane.showMessageDialog(this, "Angka " + angka + " adalah Genap", "Hasil", JOptionPane.INFORMATION_MESSAGE);
     } else {
         lblHasil.setText("Angka " + angka + " adalah Ganjil");
+        JOptionPane.showMessageDialog(this, "Angka " + angka + " adalah Ganjil", "Hasil", JOptionPane.INFORMATION_MESSAGE);
     }
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -113,6 +150,29 @@ public class FormCekNomorGanjilGenap extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtInputActionPerformed
 
+    private void btnCekPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekPrimaActionPerformed
+
+        // Tambahkan logika di ActionListener tombol Cek Prima
+        int angka = Integer.parseInt(txtInput.getText());
+        if (isPrime(angka)) {
+            lblHasil.setText("Angka " + angka + " adalah bilangan prima");
+        } else {
+            lblHasil.setText("Angka " + angka + " bukan bilangan prima");
+        }
+
+    }//GEN-LAST:event_btnCekPrimaActionPerformed
+
+    private void txtInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInputFocusGained
+        txtInput.setText("");
+    }//GEN-LAST:event_txtInputFocusGained
+    private boolean isPrime(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -150,7 +210,10 @@ public class FormCekNomorGanjilGenap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCek;
+    private javax.swing.JButton btnCekPrima;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblHasil;
     private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
